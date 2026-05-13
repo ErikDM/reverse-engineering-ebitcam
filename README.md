@@ -83,7 +83,7 @@ Shortly after, I discovered an `/etc/shadow` file which can be cracked. The `roo
 <br>
 <br>
 
-I have experienced in many cases the the root password is set randomly on each device, or even disabled/wiped. Some vendors do not like people poking around and logging into the device to discover vulnerabilities, mapping their infrastructure that the device is connected to and so forth. Many vendors go extreme measures to prevent users from reverse engineering, while others simply does not care. Looking through the file system after extracting it using `binwalk`, I discovered a file called `dev_passwd.sh`, which changes the device password. This is done after every reboot. So in practice, the root password will change every single time you reboot the camera. The password might seem random, but there is a pattern. The password is not as random as it seems...
+I have experienced in many cases that the root password is set randomly on each device, or even disabled/wiped. Some vendors do not like people poking around and logging into the device to discover vulnerabilities, mapping their infrastructure that the device is connected to and so forth. Many vendors go extreme measures to prevent users from reverse engineering, while others simply does not care. Looking through the file system after extracting it using `binwalk`, I discovered a file called `dev_passwd.sh`, which changes the device password. This is done after every reboot. So in practice, the root password will change every single time you reboot the camera. The password might seem random, but there is a pattern. The password is not as random as it seems...
 
 Ultimately, the script uses the following values to generated the root password as a MD5 string and echoes it into the `chpasswd` command:
 
